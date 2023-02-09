@@ -1,0 +1,55 @@
+form {
+	display: flex;
+	flex-direction: column;
+
+	width: 250px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+form h1 {
+	display: flex;
+	justify-content: center;
+	font-size: 40px;
+	margin-bottom: 40px;
+}
+
+.formBar {
+	border: none;
+	border-bottom: 1px #fcced3 solid;
+	margin-bottom: 20px;
+	padding: 10px;
+	outline: none;
+}
+
+.checkbox {
+	margin-top: 30px;
+	-webkit-transform: scale(2);
+	margin-right: 20px;
+}
+
+form div p {
+	margin-top: 10px;
+	text-align: justify;
+	margin-bottom: 35px;
+	line-height: 17px;
+	color: #999;
+	font-size: 12px;
+}
+
+form button {
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #00b5bd;
+	color: white;
+	font-weight: 400;
+	font-size: 17px;
+	border: none;
+	border-radius: 5px;
+}
+
+form nav {
+	color: #00b5bd;
+	font-size: 12px;
+	text-align: center;
+}

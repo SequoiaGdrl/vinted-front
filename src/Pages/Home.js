@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import "../assets/css/Home.css";
 const Home = ({ data }) => {
 	return (
 		<div>
@@ -36,7 +36,19 @@ const Home = ({ data }) => {
 									<img src={annonce.product_image.url} alt="" />
 								</Link>
 
-								<h1>{annonce.product_name}</h1>
+								<h1
+									style={{ display: "flex", flexDirection: "column-reverse" }}
+								>
+									{annonce.product_details.map((detail, index) => {
+										if (detail.TAILLE) {
+											return <p key={index}>{detail.TAILLE}</p>;
+										} else if (detail.MARQUE) {
+											return <p key={index}>{detail.MARQUE}</p>;
+										} else {
+											return null;
+										}
+									})}
+								</h1>
 
 								<p>{annonce.product_price} €</p>
 							</div>

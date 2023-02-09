@@ -1,0 +1,23 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.searchBar {
+	width: 500px;
+	height: 30px;
+}
+
+.boutons {
+	display: flex;
+	gap: 40px;
+	height: 30px;
+}
+.link {
+	text-decoration: none;
+}
+
+.lastBouton button {
+	height: 30px;
+}

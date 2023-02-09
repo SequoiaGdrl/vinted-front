@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import "../assets/css/Offer.css";
 import { Link } from "react-router-dom";
 
 const Offer = () => {
@@ -32,27 +32,16 @@ const Offer = () => {
 				<p className=" price">{offer.product_price} €</p>
 
 				<div className="detailDescription">
-					<p>
-						<span>MARQUE</span>
-						<span> {offer.product_details[0].MARQUE}</span>
-					</p>
+					{offer.product_details.map((detail) => {
+						const key = Object.keys(detail)[0];
 
-					<p>
-						<span>TAILLE</span>
-						<span>{offer.product_details[1].TAILLE}</span>
-					</p>
-					<p>
-						<span>ÉTAT</span>
-						<span>{offer.product_details[2].ÉTAT}</span>
-					</p>
-					<p>
-						<span>COULEUR</span>
-						<span>{offer.product_details[3].COULEUR}</span>
-					</p>
-					<p>
-						<span>EMPLACEMENT</span>
-						<span>{offer.product_details[4].EMPLACEMENT}</span>
-					</p>
+						return (
+							<p>
+								<span>{key}</span>
+								<span>{detail[key]}</span>
+							</p>
+						);
+					})}
 				</div>
 				<br />
 				<hr width="80%" size="1px"></hr>

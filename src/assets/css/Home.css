@@ -1,0 +1,83 @@
+.imageCenter {
+	width: 100%;
+	position: relative;
+}
+
+.imageCenter img {
+	width: 100%;
+	height: 500px;
+	object-fit: cover;
+}
+
+.boxAnnonce {
+	width: 300px;
+	height: 200px;
+	display: flex;
+	top: 100px;
+	left: 100px;
+	background-color: white;
+	flex-direction: column;
+	position: absolute;
+	padding: 20px;
+	border-radius: 5px;
+}
+.images {
+	position: relative;
+}
+
+.boxAnnonce h1 {
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
+.boxAnnonce button {
+	width: 150px;
+	height: 40px;
+	background-color: #00b5bd;
+	color: white;
+	border: 0;
+	border-radius: 5px;
+	margin-bottom: 40px;
+}
+
+.boxAnnonce a {
+	color: black;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.annonce {
+	margin-top: 50px;
+}
+
+.annonce div {
+	display: flex;
+	margin-bottom: 20px;
+	gap: 10px;
+}
+
+.annonce div img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.annonce div span {
+	color: gray;
+	display: flex;
+	align-items: center;
+}
+
+.annonce img {
+	width: 250px;
+	height: 300px;
+	display: flex;
+}
+.annonce h1 {
+	width: 200px;
+}
