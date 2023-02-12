@@ -3,15 +3,17 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import "../assets/css/SignUp.css";
-const Signup = () => {
+const Signup = ({ connected, setConnected }) => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
 	const [newsletter, setNewsletter] = useState(false);
+	const [ErrorMessage, setErrorMessage] = useState("");
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setErrorMessage("");
 		if (password.length < 8) {
 			alert("votre mot de passe doit contenir au minimun 8 caractères");
 		} else {
@@ -20,19 +22,36 @@ const Signup = () => {
 	};
 
 	const fetchData = async () => {
-		const response = await axios.post(
-			"https://lereacteur-vinted-api.herokuapp.com/user/signup",
-			{
-				username: username,
-				email: email,
-				password: password,
-				newsletter: newsletter,
-			}
-		);
+		try {
+			const response = await axios.post(
+				"https://lereacteur-vinted-api.herokuapp.com/user/signup",
+				{
+					username: username,
+					email: email,
+					password: password,
+					newsletter: newsletter,
+				}
+			);
 
-		const token = response.data.token;
-		Cookies.set("token", token, { expires: 7 });
-		navigate("/");
+			const token = response.data.token;
+			if (token) {
+				Cookies.set("token", token, { expires: 7 });
+				setConnected(true);
+				navigate("/");
+			}
+		} catch (error) {
+			if (error.response.data.message === "Missing parameters") {
+				setErrorMessage(
+					"Veuillez remplir TOUS les champs pour pouvoir s'inscrire"
+				);
+			}
+
+			if (error.response.data.message === "This email already has an account") {
+				setErrorMessage(
+					"Votre email existe déjà. Veuillez utiliser un autre email"
+				);
+			}
+		}
 	};
 
 	return (
@@ -65,6 +84,7 @@ const Signup = () => {
 					setPassword(event.target.value);
 				}}
 			/>
+			<p style={{ color: "red" }}>{ErrorMessage}</p>
 			<div>
 				<input
 					className="checkbox"

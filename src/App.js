@@ -12,12 +12,15 @@ import Cookies from "js-cookie";
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState();
+	const [connected, setConnected] = useState(false);
+	const [searchBar, setSearchBar] = useState("");
+	const [toggle, setToggle] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					"https://lereacteur-vinted-api.herokuapp.com/offers"
+					`https://lereacteur-vinted-api.herokuapp.com/offers`
 				);
 				setData(response.data);
 				setIsLoading(false);
@@ -27,6 +30,36 @@ function App() {
 		};
 		fetchData();
 	}, []);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await axios.get(
+					`https://lereacteur-vinted-api.herokuapp.com/offers?title=${searchBar}`
+				);
+				setData(response.data);
+			} catch (error) {
+				console.log(error.message);
+			}
+		};
+		fetchData();
+	}, [searchBar]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await axios.get(
+					`https://lereacteur-vinted-api.herokuapp.com/offers?sort=${
+						toggle ? "price-asc" : "price-desc"
+					}`
+				);
+				setData(response.data);
+			} catch (error) {
+				console.log(error.response.data.message);
+			}
+		};
+		fetchData();
+	}, [toggle]);
 
 	return isLoading ? (
 		<p>Loading ...</p>
@@ -44,16 +77,39 @@ function App() {
 							/>
 						</Link>
 					</div>
+					<div className="toggle">
+						<span>prix desc</span>
+						<label className="switch">
+							<input
+								type="checkbox"
+								value={toggle}
+								onChange={() => {
+									setToggle(!toggle);
+								}}
+							/>
+							<span></span>
+						</label>
+						<span>prix asc</span>
+					</div>
 
 					<input
 						className="searchBar"
+						value={searchBar}
 						type="text"
 						placeholder="Recherche des articles"
+						onChange={async (event) => {
+							setSearchBar(event.target.value);
+						}}
 					/>
 
 					<div className="boutons">
-						{Cookies.get("token") ? (
-							<button onClick={() => Cookies.remove("token")}>
+						{connected ? (
+							<button
+								onClick={() => {
+									Cookies.remove("token");
+									setConnected(false);
+								}}
+							>
 								Deconnection
 							</button>
 						) : (
@@ -81,8 +137,14 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home data={data} />} />
 				<Route path="/offer/:id" element={<Offer data={data} />} />
-				<Route path="/signup" element={<Signup />} />
-				<Route path="/login" element={<Login />} />
+				<Route
+					path="/signup"
+					element={<Signup connected={connected} setConnected={setConnected} />}
+				/>
+				<Route
+					path="/login"
+					element={<Login connected={connected} setConnected={setConnected} />}
+				/>
 			</Routes>
 		</Router>
 	);

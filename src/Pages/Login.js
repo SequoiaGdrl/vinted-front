@@ -4,26 +4,42 @@ import axios from "axios";
 import "../assets/css/SignUp.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-const Login = () => {
+const Login = ({ connected, setConnected }) => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const signIn = async () => {
-		const response = await axios.post(
-			"https://lereacteur-vinted-api.herokuapp.com/user/login",
-			{
-				email: email,
-				password: password,
+		try {
+			const response = await axios.post(
+				"https://lereacteur-vinted-api.herokuapp.com/user/login",
+				{
+					email: email,
+					password: password,
+				}
+			);
+			const token = response.data.token;
+			if (token) {
+				Cookies.set("token", token, { expires: 7 });
+				setConnected(true);
+				navigate("/");
 			}
-		);
-		const token = response.data.token;
-		Cookies.set("token", token, { expires: 7 });
-		navigate("/");
+		} catch (error) {
+			console.log(error.response.data.message);
+			if (error.response.data.message === "User not found") {
+				setErrorMessage("Cet email n'est pas connu chez nous.");
+			}
+
+			if (error.response.data.message === undefined) {
+				setErrorMessage("Erreur sur le mot de passe");
+			}
+		}
 	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setErrorMessage("");
 		signIn();
 	};
 
@@ -49,8 +65,9 @@ const Login = () => {
 					setPassword(event.target.value);
 				}}
 			/>
-
+			<p style={{ color: "red" }}>{errorMessage}</p>
 			<button type="submit">Se connecter</button>
+
 			<Link className="link" to={"/signup"}>
 				<nav>Pas encore de compte? Inscris-toi!</nav>
 			</Link>
