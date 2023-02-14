@@ -1,12 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@400;700&display=swap");
+
+body {
+	font-family: "Ubuntu", sans-serif;
+}
 .header {
 	display: flex;
 	justify-content: space-between;
 	padding: 20px;
+	width: 1400px;
+	margin: 0 auto;
+}
+.containerSearch {
+	display: flex;
+}
+.container2 {
+	display: flex;
+	flex-direction: column;
 }
 
 .searchBar {
 	width: 500px;
 	height: 30px;
+	border: none;
+	background-color: #f5f6f7;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	outline: none;
+}
+.iconSearch {
+	background-color: #f5f6f7;
+	width: 30px;
+	height: 32px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	color: rgb(147, 147, 147);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+::placeholder {
+	color: rgb(147, 147, 147);
 }
 
 .boutons {
@@ -14,18 +48,43 @@
 	gap: 40px;
 	height: 30px;
 }
+
+.deconnection {
+	background-color: #c2175b !important;
+	color: white;
+	border: none;
+}
+.boutons button {
+	background-color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-color: #00b5bd;
+	border-radius: 5px;
+}
 .link {
 	text-decoration: none;
+	color: #00b5bd;
+}
+
+.link2 {
+	text-decoration: none;
+	color: white;
 }
 
 .lastBouton button {
 	height: 30px;
+	background-color: #2cb1ba;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .switch {
 	display: inline-block;
-	width: 70px;
-	height: 40px;
+	width: 40px;
+	height: 20px;
 	cursor: pointer;
 	overflow: hidden;
 	position: relative;
@@ -43,11 +102,11 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: #346abf;
+	background: #00b5bd;
 	border-radius: 20px;
 }
 .switch input:checked + span {
-	background: #346abf;
+	background: #00b5bd;
 }
 .switch input + span:before {
 	content: "";
@@ -55,19 +114,24 @@
 	position: absolute;
 	top: 50%;
 	left: 4px;
-	width: 32px;
-	height: 32px;
+	width: 14px;
+	height: 14px;
 	background: white;
 	border-radius: 50%;
 	transform: translateY(-50%);
 	transition: all 0.5s;
 }
 .switch input:checked + span:before {
-	left: 34px;
+	left: 22px;
 }
 
 .toggle {
 	display: flex;
 	align-items: center;
 	gap: 10px;
+	margin-top: 20px;
+}
+
+.textToggle {
+	font-size: 13px;
 }

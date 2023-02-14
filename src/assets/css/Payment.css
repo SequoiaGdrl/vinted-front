@@ -1,0 +1,39 @@
+.payment {
+	background-color: #ffffff;
+	width: 600px;
+	padding: 36px 20px;
+	margin: 0 auto;
+}
+
+.bodyPayment {
+	background-color: #ebedee;
+	padding: 20px;
+}
+
+.payment p {
+	color: #999;
+	font-size: 14px;
+	margin-bottom: 50px;
+}
+
+.resume {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-bottom: 1px solid #ebedee;
+	padding-bottom: 50px;
+}
+
+.resume div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pay {
+	width: 100%;
+	background-color: #00c06d;
+	border-radius: 5px;
+	border: none;
+	height: 40px;
+	color: #ffffff;
+}

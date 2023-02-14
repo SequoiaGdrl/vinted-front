@@ -24,7 +24,7 @@ const Signup = ({ connected, setConnected }) => {
 	const fetchData = async () => {
 		try {
 			const response = await axios.post(
-				"https://lereacteur-vinted-api.herokuapp.com/user/signup",
+				"https://site--backend-vinted--vrh2r8t5z46t.code.run/user/signup",
 				{
 					username: username,
 					email: email,
@@ -35,7 +35,9 @@ const Signup = ({ connected, setConnected }) => {
 
 			const token = response.data.token;
 			if (token) {
-				Cookies.set("token", token, { expires: 7 });
+				Cookies.set("token", token, {
+					expires: 7,
+				});
 				setConnected(true);
 				navigate("/");
 			}
@@ -56,7 +58,7 @@ const Signup = ({ connected, setConnected }) => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h1>S'incrire</h1>
+			<h1> S 'incrire</h1>
 			<input
 				className="formBar"
 				type="text"
@@ -84,7 +86,13 @@ const Signup = ({ connected, setConnected }) => {
 					setPassword(event.target.value);
 				}}
 			/>
-			<p style={{ color: "red" }}>{ErrorMessage}</p>
+			<p
+				style={{
+					color: "red",
+				}}
+			>
+				{ErrorMessage}
+			</p>
 			<div>
 				<input
 					className="checkbox"
@@ -96,17 +104,17 @@ const Signup = ({ connected, setConnected }) => {
 					}}
 				/>
 				<label>
-					<span>S'inscrire à notre newsletter</span>
+					<span> S 'inscrire à notre newsletter</span>
 					<p>
-						En m'inscrivant je confirme avoir lu et accepté les termes &
-						conditions et politique de Confidentialité de Vinded. Je confirme
+						En m 'inscrivant je confirme avoir lu et accepté les termes &
+						conditions et politique de Confidentialité de Vinded.Je confirme
 						avoir au moins 18 ans.
 					</p>
 				</label>
 			</div>
-			<button type="submit">S'inscrire</button>
+			<button type="submit"> S 'inscrire</button>
 			<Link className="link" to={"/login"}>
-				<nav>Tu as déja un compte? Connecte-toi!</nav>
+				<nav> Tu as déja un compte ? Connecte - toi! </nav>
 			</Link>
 		</form>
 	);

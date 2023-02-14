@@ -1,0 +1,88 @@
+.main {
+	background-color: #ebedee;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 1400px;
+	margin: 0 auto;
+	padding-top: 40px;
+	gap: 10px;
+}
+
+.form h1 {
+	padding: 10px;
+	font-size: 20px;
+	font-weight: 550;
+}
+
+.containerPicture {
+	height: 150px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.containerNewOffer {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+}
+
+.containerNewOffer .checkboxForm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	margin-top: 20px;
+	padding-bottom: 25px;
+}
+
+.buttonSubm {
+	display: flex;
+	flex-direction: row-reverse;
+}
+.btnAddOffer {
+	border: none;
+	width: 100px;
+	height: 40px;
+	margin-bottom: 60px;
+	color: white;
+	background-color: #43b1ba;
+	border-radius: 5px;
+}
+
+.inputForm {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #ebedee;
+	padding-top: 30px;
+}
+.inputForm label {
+	margin-left: 10px;
+}
+
+.inputForm input {
+	width: 60%;
+
+	border: none;
+	border-bottom: 1px solid rgb(219, 216, 216);
+	outline: none;
+}
+
+.inputForm input:focus {
+	border-bottom: 1px solid #43b1ba;
+}
+
+.inputForm textarea {
+	width: 60%;
+	border: none;
+	border-bottom: 1px solid rgb(219, 216, 216);
+	outline: none;
+}
+.inputForm textarea:focus {
+	border-bottom: 1px solid #43b1ba;
+}
